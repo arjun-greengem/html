@@ -1,0 +1,50 @@
+<html>
+<head>
+  <title>Simple Calendar</title>
+  <style>
+    body {
+          font-family:Arial;
+          text-align:center;
+          margin-top:50px
+         }
+    table {
+            margin:20px auto;
+            border-collapse:collapse
+          }
+    th,td {
+             border:1px solid #ccc;
+             padding:8px
+          }
+    th { 
+          background:#f0f0f0
+       }
+  </style>
+</head>
+<body>
+  <h2>Show Calendar</h2>
+  <input type="number" id="year" placeholder="Year" min="1">
+  <input type="number" id="month" placeholder="Month (1-12)" min="1" max="12">
+  <button onclick="show()">Show</button>
+  <div id="cal"></div>
+
+  <script>
+    function show()
+     {
+      let y = document.getElementById('year').value;
+      let m = document.getElementById('month').value - 1;
+      if(!y || m<0 || m>11) return alert('Invalid input');
+      let d = new Date(y,m,1);
+      let days = new Date(y,m+1,0).getDate();
+      let html = `<table><tr><th colspan="7">${d.toLocaleString('default',{month:'long',year:'numeric'})}</th></tr>
+                  <tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr><tr>`;
+      for(let i=0;i<d.getDay();i++) html += '<td></td>';
+      for(let day=1;day<=days;day++){
+        html += `<td>${day}</td>`;
+        if((d.getDay()+day)%7===0) html += '</tr><tr>';
+      }
+      html += '</tr></table>';
+      document.getElementById('cal').innerHTML = html;
+    }
+  </script>
+</body>
+</html>

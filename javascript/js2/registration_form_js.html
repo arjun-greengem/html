@@ -1,0 +1,54 @@
+<html>
+ <head>
+  <title>validation</title>
+  <style>
+    body{
+background-color:yellow;
+    }
+    label {
+      display: inline-block;
+      width: 80px; 
+    }
+    input {
+      margin-bottom: 8px;  
+    }
+  </style>
+ </head>
+ <body>
+  <h2>Form Validation</h2>
+  <form onsubmit="return validation()">
+    <label>name:</label>
+    <input type="text" id="name"> <br>
+    <label>email:</label>
+    <input type="text" id="email"> <br>
+    <label>password:</label>
+    <input type="password" id="pas"><br>
+    <input type="submit" value="Submit">
+  </form>
+  <script>
+  function validation()
+  {
+   let name= document.getElementById("name").value;
+   let email= document.getElementById("email").value;
+   let password= document.getElementById("pas").value;
+   if(name==""||email==""||password=="")
+    {
+     alert("All feild are requerd");
+     return false;
+    }
+   if(email.indexOf("@")==-1 || email.indexOf(".")==-1)
+    {
+     alert("Enter a valid email");
+     return false;
+    }
+   if(password.length<6)
+    {
+     alert("Password mustbe atleast 6 character");
+     return false;
+    }
+    alert("Form submitted Successfully");
+    return true;
+  }
+  </script>
+</body>
+</html>

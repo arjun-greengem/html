@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>Quiz</title>
+</head>
+<body>
+<form>
+  <fieldset>
+    <legend>1. What does HTML stand for?</legend>
+    <label><input type="radio" name="q1" value="A"> HyperText Markup Language</label><br>
+    <label><input type="radio" name="q1" value="B"> HyperText Mark Language</label><br>
+    <label><input type="radio" name="q1" value="C"> HyperText Modern Language</label><br>
+    <label><input type="radio" name="q1" value="D"> HyperText Language</label><br>
+  </fieldset>
+
+  <fieldset>
+    <legend>2. Which tag is used to define the root of an HTML document?</legend>
+    <label><input type="radio" name="q2" value="A"> body</label><br>
+    <label><input type="radio" name="q2" value="B"> html</label><br>
+    <label><input type="radio" name="q2" value="C"> h1</label><br>
+    <label><input type="radio" name="q2" value="D"> p</label><br>
+  </fieldset>
+
+  <fieldset>
+    <legend>3. Which HTML element is used to define a paragraph?</legend>
+    <label><input type="radio" name="q3" value="A"> p</label><br>
+    <label><input type="radio" name="q3" value="B"> i</label><br>
+    <label><input type="radio" name="q3" value="C"> l</label><br>
+    <label><input type="radio" name="q3" value="D"> para</label><br>
+  </fieldset>
+
+  <fieldset>
+    <legend>4. How do you insert a line break in HTML?</legend>
+    <label><input type="radio" name="q4" value="A"> break</label><br>
+    <label><input type="radio" name="q4" value="B"> br</label><br>
+    <label><input type="radio" name="q4" value="C"> stop</label><br>
+    <label><input type="radio" name="q4" value="D"> next</label><br>
+  </fieldset>
+
+  <button type="button" onclick="score()">Score</button>
+</form>
+
+<p id="result"></p>
+
+<script>
+function score() {
+  const answers = {
+    q1: "A",
+    q2: "B",
+    q3: "A",
+    q4: "B"
+  };
+
+  let score = 0;
+
+  for (let key in answers) {
+    const selected = document.querySelector('input[name="' + key + '"]:checked');
+    if (selected && selected.value === answers[key]) {
+      score++;
+    }
+  }
+
+  document.getElementById("result").innerText = "Your score is " + score + " out of 4";
+}
+</script>
+</body>
+</html>
+
